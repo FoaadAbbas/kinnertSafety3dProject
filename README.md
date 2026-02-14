@@ -1,1 +1,35 @@
-🌊 Lake Kinneret Safety & 3D Dynamics ProjectThis project integrates real-time environmental data, machine learning, and interactive 3D visualization to enhance safety and provide short-term ecological predictions for Lake Kinneret. It is designed for researchers, safety officials, and the public to monitor wind patterns, wave heights, and current intensities.🚀 Key Features1. Interactive RAG (Retrieval-Augmented Generation) SystemAcademic Querying: An AI-powered assistant that answers research questions based on a specific library of ecological papers.Context-Aware: Uses ChromaDB (or a custom vector store fallback) to retrieve relevant research regarding Kinneret's wind and wave dynamics.Expert Responses: Generates technical answers using OpenAI's SDK (where available) or structured template responses.2. Real-Time Monitoring DashboardMulti-Station Data: Aggregates data from land-based meteorological stations (Ginosar, Bteha, Ein-Gev, Zemah) and lake-based sensors (KNW, KNC).KPI Tracking: Live display of wind speed, air temperature, relative humidity, current intensity, and wave height.Safety Status: Automatically determines if conditions are "Safe" or "Advisory" based on predefined thresholds for wave height ($H_s \ge 0.5m$), current intensity ($\ge 0.3m/s$), and wind speed ($\ge 6m/s$).3. Environmental Simulations & KrigingSpatial Interpolation: Uses Ordinary Kriging (OK) and Universal Kriging (UK) to map the $U_{wind}$ (east-west) field across the entire lake surface.Uncertainty Mapping: Visualizes variance fields to identify areas where prediction uncertainty is highest.Scenario Analysis: Includes preset simulations for "Pressure" (storm/stress), "Baseline" (typical), and "Recovery" conditions.4. ML-Powered ForecastsShort-Term Predictions: Employs KNN Regression and Delta-Learning models to forecast Significant Wave Height ($H_s$) and Current Magnitude for the next 10 hours.Non-Leaking Logic: Ensures the model only trains on "past" data relative to the selected forecast base time.5. 3D Safety PrototypeWeb-Based 3D: A Three.js-powered interactive map of the lake.Danger Hotspots: Highlights specific zones with known risks such as "Bteha Currents" or "Tabgha Eddies".Beach Safety: Provides localized safety tips and risk factors (e.g., sudden depth changes or underwater rocks) for popular beaches.🛠️ Technology StackFrontend: Gradio (Dashboard UI), Three.js (3D Visualization).Data Processing: Pandas, NumPy, SciPy.Mapping/Geospatial: PyKrige (Kriging), PyProj (UTM36N projections).Machine Learning: Scikit-Learn (KNN, Random Forest, SVM).AI/LLM: OpenAI API, Sentence-Transformers, ChromaDB.Data Sources: Real-time CSV/XLSX feeds from GitHub and Firebase.📂 File Structureapp.py: The core application file containing the RAG logic, ML forecasting, and Gradio interface.requirements.txt: List of Python dependencies (Gradio, NumPy, Pandas, PyKrige, etc.).index.html / prototype.html: Three.js implementations for the interactive 3D safety guide.README.md: Project configuration for Hugging Face Spaces.⚠️ Safety DisclaimerThe safety status and alerts provided by this system are based on automated sensor data and machine learning models. Always follow the instructions of local authorities and lifeguards when visiting Lake Kinneret.
+🌊 ניטור, חיזוי ובטיחות בים כנרת (BioDynamics Team)
+פרויקט זה פותח כחלק מקורס "מעבדה במידול מערכות אקולוגיות", בהנחיית המרצה נעמי בבראודה. המערכת משלבת ניתוח נתונים בזמן אמת, מודלים סטטיסטיים מתקדמים (Kriging), למידת מכונה (Machine Learning) וממשק תלת-ממדי אינטראקטיבי במטרה לשפר את הבטיחות ולהעמיק את ההבנה המדעית של הדינמיקה האקולוגית והפיזיקלית באגם הכנרת.
+
+📋 סקירה כללית
+המערכת הוקמה כדי לתת מענה לצורך בניטור וחיזוי קצר טווח של משטרי רוחות, גלים וזרמים באגם הכנרת. המיזם מאחד מספר עולמות טכנולוגיים לכדי פלטפורמה אחת המיועדת לחוקרים, מקבלי החלטות והציבור הרחב.
+
+🛠️ מרכיבי המערכת
+1. דשבורד ניטור וחיזוי (Gradio App)
+ממשק מרכזי המציג נתונים אקלימיים ופיזיקליים בזמן אמת מתחנות המדידה השונות (גינוסר, בטיחה, עין גב וצמח).
+
+מערכת התראות: זיהוי אוטומטי של תנאי סכנה (רוחות עזות, זרמים חזקים או גלים גבוהים) והצגתם למשתמש.
+
+מודל חיזוי (ML): שימוש באלגוריתם KNN Regressor לחיזוי גובה גלים ועוצמת זרמים ל-10 השעות הקרובות על בסיס נתונים היסטוריים ודינמיים.
+
+2. מידול מרחבי בשיטת Kriging
+יישום שיטות אינטרפולציה גאו-סטטיסטיות (Ordinary & Universal Kriging) למיפוי מרחבי של רכיבי הרוח מעל פני האגם.
+
+ניתוח תרחישים: השוואה בין מצבי "לחץ", "בסיס" ו"התאוששות" להבנת תגובת האגם לשינויים אטמוספריים.
+
+3. מנוע חיפוש אקדמי (RAG System)
+מערכת Retrieval-Augmented Generation המאפשרת למשתמשים לשאול שאלות מחקריות ולקבל תשובות מבוססות על ספריית מאמרים אקולוגיים שנבחרה בקפידה.
+
+טכנולוגיה: שימוש ב-ChromaDB לניהול וקטורי של מאמרים וחיבור ל-OpenAI להפקת תשובות מנומקות.
+
+4. פרוטוטיפ בטיחות בתלת-ממד (Three.js)
+כלי ויזואלי המאפשר סיור וירטואלי סביב האגם, תוך הדגשת "נקודות חמות" (Hotspots) של סכנה כמו מערבולות וזרמים תת-מימיים.
+
+מידע לחופים: פירוט סיכונים ספציפיים (סלעים, עומק פתאומי) והמלצות בטיחות מותאמות לכל חוף.
+
+📚 רקע אקדמי
+הפרויקט מהווה יישום מעשי של עקרונות המידול האקולוגי שנלמדו במעבדה. הוא מדגים כיצד ניתן להפוך נתונים גולמיים ממקורות שונים (כמו GitHub ו-Firebase) למערכת תומכת החלטות המסייעת בשמירה על חיי אדם והבנת המערכת האקולוגית הרגישה של הכנרת.
+
+מגישים: צוות BioDynamics
+במסגרת: מעבדה במידול מערכות אקולוגיות
+מרצה: נעמי בבראודה
