@@ -1,0 +1,19 @@
+gradio
+numpy==1.23.5
+pandas==1.5.3
+scipy==1.10.1
+scikit-learn==1.2.2
+matplotlib==3.7.2
+pyproj==3.6.1
+pykrige==1.7.0
+xlrd==2.0.1
+openpyxl>=3.1.2      # לקריאת קבצי xlsx
+requests>=2.32.3     # אם מושכים קבצים מהאינטרנט
+ipython>=8.0.0       # אם משתמשים ב-IPython.display
+
+# אופציונלי – ישארו מושבתות עד שתרצי באמת:
+openai>=1.0.0
+sentence-transformers>=2.2.2
+chromadb>=0.4.0
+
+plotly
