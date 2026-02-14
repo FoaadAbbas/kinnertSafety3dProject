@@ -611,7 +611,7 @@ Set your OpenAI API key here if you have one (optional).
 """
 
 # Configuration
-OPENAI_API_KEY = ""  # Replace with your OpenAI API key if you have one
+ # Replace with your OpenAI API key if you have one
 #OPENAI_API_KEY = None
 
 #OPENAI_API_KEY = "sk-your-api-key-here"  # Uncomment and add your key
